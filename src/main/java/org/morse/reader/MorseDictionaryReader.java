@@ -18,6 +18,12 @@ public class MorseDictionaryReader {
 
 
 
+    /**
+     * We don't have @Inject annotation here.
+     * If class has default constructor (constructor without arguments)
+     * then injector will use it.
+     * It's convention enforced by Guice library
+     * */
     public MorseDictionaryReader() {
         this.morseDictionaryFile = "/morse_dictionary.csv";
     }

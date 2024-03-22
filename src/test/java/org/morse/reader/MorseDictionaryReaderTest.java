@@ -1,12 +1,10 @@
-package org.morse;
+package org.morse.reader;
 
 import org.junit.jupiter.api.Test;
-import org.morse.reader.MorseDictionaryReadException;
-import org.morse.reader.MorseDictionaryReadRuntimeException;
-import org.morse.reader.MorseDictionaryReader;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
@@ -18,9 +16,16 @@ public class MorseDictionaryReaderTest {
         var sut = new MorseDictionaryReader();
 
         var englishToMorse = sut.readEnglishToMorseDictionary();
+        // hamcrest way to assert
         assertThat(englishToMorse, hasEntry("A", ".-"));
         assertThat(englishToMorse, hasEntry("9", "----."));
+        //junit way to assert
+        assertEquals(englishToMorse.get("A"), ".-");
+
+        // hamcrest way to assert
         assertThat(englishToMorse.keySet(), hasSize(36));
+        // junit way to assert
+        assertEquals(englishToMorse.size(), 36);
     }
 
     @Test

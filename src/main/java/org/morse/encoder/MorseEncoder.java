@@ -1,5 +1,6 @@
 package org.morse.encoder;
 
+import com.google.inject.Inject;
 import org.morse.dictionary.MorseDictionaryEncoder;
 import org.morse.dictionary.MorseDictionaryException;
 
@@ -10,6 +11,14 @@ public class MorseEncoder {
 
     private final MorseDictionaryEncoder morseDictionaryEncoder;
 
+    /**
+     * for Guice Dependency injector, it tells injector to inject MorseDictionaryEncoder
+     * into this constructor.
+     * You should tell it to injector using special annotation  @Inject  (part of Guice library)
+     * injector has no idea what to do with constructor.
+     * You literally tell injector to inject MorseDictionaryEncoder here
+     * */
+    @Inject
     public MorseEncoder(MorseDictionaryEncoder morseDictionaryEncoder) {
         this.morseDictionaryEncoder = morseDictionaryEncoder;
     }

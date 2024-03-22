@@ -1,5 +1,6 @@
 package org.morse.dictionary;
 
+import com.google.inject.Inject;
 import org.morse.reader.MorseDictionaryReadException;
 import org.morse.reader.MorseDictionaryReader;
 
@@ -11,6 +12,10 @@ public class MorseDictionaryEncoder {
     private final Map<String, String> englishToMorse;
     private final Map<String, String> morseToEnglish;
 
+    /**
+     * Tell Guice injector to inject MorseDictionaryReader into constructor
+     * */
+    @Inject
     public MorseDictionaryEncoder(MorseDictionaryReader morseDictionaryReader) throws MorseDictionaryReadException {
         englishToMorse = morseDictionaryReader.readEnglishToMorseDictionary();
         morseToEnglish = englishToMorse.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
